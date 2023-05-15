@@ -23,9 +23,9 @@ class AuthDatasourceImpl extends AuthDatasource {
     } on DioError catch (e) {
       if (e.response?.statusCode == 401) throw WrongCredentials();
       if (e.type == DioErrorType.connectionTimeout) throw ConnectionTimeout();
-      throw CustomError('Somethingwrong happend', 500);
+      throw CustomError('Somethingwrong happend');
     } catch (e) {
-      throw CustomError('Somethingwrong happend', 500);
+      throw CustomError('Somethingwrong happend');
     }
   }
 
