@@ -33,7 +33,7 @@ class AuthNotifier extends StateNotifier<AuthState> {
     } on ConnectionTimeout catch (e) {
       logout('Timeout');
     } catch (e) {
-      logout('Errorno controlado');
+      logout('Error no controlado');
     }
   }
 
