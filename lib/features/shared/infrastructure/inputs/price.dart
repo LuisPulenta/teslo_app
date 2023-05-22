@@ -23,8 +23,9 @@ class Price extends FormzInput<double, PriceError> {
   // Override validator to handle validating a given input value.
   @override
   PriceError? validator(double value) {
-    if (value.toString().isEmpty || value.toString().trim().isEmpty)
+    if (value.toString().isEmpty || value.toString().trim().isEmpty) {
       return PriceError.empty;
+    }
     if (value < 0) return PriceError.value;
 
     return null;

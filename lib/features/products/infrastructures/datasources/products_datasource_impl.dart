@@ -1,8 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:teslo_shop/config/config.dart';
 import 'package:teslo_shop/features/products/domain/domain.dart';
+
 import '../errors/product_errors.dart';
-import 'package:teslo_shop/features/products/infrastructures/mappers/product_mapper.dart';
+import '../mappers/product_mapper.dart';
 
 class ProductsDatasourceImpl extends ProductsDatasource {
   late final Dio dio;
@@ -11,18 +12,32 @@ class ProductsDatasourceImpl extends ProductsDatasource {
   ProductsDatasourceImpl({required this.accessToken})
       : dio = Dio(BaseOptions(
             baseUrl: Environment.apiUrl,
-            headers: {'Authorizathon': 'Bearer $accessToken'}));
+            headers: {'Authorization': 'Bearer $accessToken'}));
 
   @override
-  Future<Product> createUpdateProduct(Map<String, dynamic> productLike) {
-    // TODO: implement createUpdateProduct
-    throw UnimplementedError();
+  Future<Product> createUpdateProduct(Map<String, dynamic> productLike) async {
+    try {
+      final String? productId = productLike['id'];
+      final String method = (productId == null) ? 'POST' : 'PATCH';
+      final String url =
+          (productId == null) ? '/products' : '/products/$productId';
+
+      productLike.remove('id');
+
+      final response = await dio.request(url,
+          data: productLike, options: Options(method: method));
+
+      final product = ProductMapper.jsonToEntity(response.data);
+      return product;
+    } catch (e) {
+      throw Exception();
+    }
   }
 
   @override
   Future<Product> getProductById(String id) async {
     try {
-      final response = await dio.get('/products/${id}');
+      final response = await dio.get('/products/$id');
       final product = ProductMapper.jsonToEntity(response.data);
       return product;
     } on DioError catch (e) {
@@ -42,6 +57,7 @@ class ProductsDatasourceImpl extends ProductsDatasource {
     for (final product in response.data ?? []) {
       products.add(ProductMapper.jsonToEntity(product));
     }
+
     return products;
   }
 

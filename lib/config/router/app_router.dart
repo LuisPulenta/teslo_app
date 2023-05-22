@@ -44,7 +44,7 @@ final goRouterProvider = Provider((ref) {
       final isGoingTo = state.subloc;
       final authStatus = goRouterNotifier.authStatus;
 
-      print('GoRouter authStatus: $authStatus, isGoingTo: $isGoingTo');
+      //print('GoRouter authStatus: $authStatus, isGoingTo: $isGoingTo');
 
       if (isGoingTo == 'checkstatus' && authStatus == AuthStatus.checking) {
         return null;

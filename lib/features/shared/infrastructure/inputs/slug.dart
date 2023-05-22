@@ -15,8 +15,9 @@ class Slug extends FormzInput<String, SlugError> {
     if (isValid || isPure) return null;
 
     if (displayError == SlugError.empty) return 'El campo es requerido';
-    if (displayError == SlugError.format)
+    if (displayError == SlugError.format) {
       return 'El campo no tiene el formato esperado';
+    }
 
     return null;
   }
