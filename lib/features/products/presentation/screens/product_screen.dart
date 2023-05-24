@@ -35,6 +35,7 @@ class ProductScreen extends ConsumerWidget {
             : _ProductView(product: productState.product!),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+            FocusScope.of(context).unfocus();
             if (productState.product == null) return;
 
             ref
