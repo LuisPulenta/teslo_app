@@ -2,6 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:teslo_shop/features/products/domain/domain.dart';
 import 'package:teslo_shop/features/products/presentation/providers/products_repository_provider.dart';
 
+//------------------------- Provider ----------------------------
 final productProvider = StateNotifierProvider.autoDispose
     .family<ProductNotifier, ProductState, String>((ref, productId) {
   final productsRepository = ref.watch(productsRepositoryProvider);
@@ -9,6 +10,7 @@ final productProvider = StateNotifierProvider.autoDispose
       productsRepository: productsRepository, productId: productId);
 });
 
+//------------------------- Notifier ----------------------------
 class ProductNotifier extends StateNotifier<ProductState> {
   final ProductsRepository productsRepository;
 
@@ -50,6 +52,7 @@ class ProductNotifier extends StateNotifier<ProductState> {
   }
 }
 
+//------------------------- State ----------------------------
 class ProductState {
   final String id;
   final Product? product;

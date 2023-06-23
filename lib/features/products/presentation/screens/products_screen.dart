@@ -33,7 +33,7 @@ class ProductsScreen extends StatelessWidget {
   }
 }
 
-//----------------------------------------------------------------
+//-------------------------- _ProductsView -------------------
 
 class _ProductsView extends ConsumerStatefulWidget {
   const _ProductsView();
