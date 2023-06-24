@@ -18,6 +18,7 @@ class ProductScreen extends ConsumerWidget {
         .showSnackBar(const SnackBar(content: Text('Producto Actualizado')));
   }
 
+//---------------------- Pantalla ---------------------------
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final productState = ref.watch(productProvider(productId));
@@ -73,6 +74,7 @@ class ProductScreen extends ConsumerWidget {
   }
 }
 
+//---------------------- _ProductView ---------------------------
 class _ProductView extends ConsumerWidget {
   final Product product;
 
@@ -105,6 +107,7 @@ class _ProductView extends ConsumerWidget {
   }
 }
 
+//---------------------- _ProductInformation ---------------------------
 class _ProductInformation extends ConsumerWidget {
   final Product product;
   const _ProductInformation({required this.product});
@@ -194,6 +197,7 @@ class _ProductInformation extends ConsumerWidget {
   }
 }
 
+//---------------------- _SizeSelector ---------------------------
 class _SizeSelector extends StatelessWidget {
   final List<String> selectedSizes;
   final List<String> sizes = const ['XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'];
@@ -225,6 +229,7 @@ class _SizeSelector extends StatelessWidget {
   }
 }
 
+//---------------------- _GenderSelector ---------------------------
 class _GenderSelector extends StatelessWidget {
   final String selectedGender;
   final void Function(String selectedGender) onGenderChanged;
@@ -262,6 +267,7 @@ class _GenderSelector extends StatelessWidget {
   }
 }
 
+//---------------------- _ImageGallery ---------------------------
 class _ImageGallery extends StatelessWidget {
   final List<String> images;
   const _ImageGallery({required this.images});

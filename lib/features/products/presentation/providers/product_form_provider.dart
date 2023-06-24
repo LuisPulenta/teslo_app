@@ -5,6 +5,7 @@ import 'package:teslo_shop/features/products/domain/domain.dart';
 import 'package:teslo_shop/features/products/presentation/providers/providers.dart';
 import 'package:teslo_shop/features/shared/infrastructure/inputs/inputs.dart';
 
+//------------------- Provider -----------------------------
 final productFormProvider = StateNotifierProvider.autoDispose
     .family<ProductFormNotifier, ProductFormState, Product>((ref, product) {
   //final createUpdateCallback = ref.watch(productsRepositoryProvider).createUpdateProduct;
@@ -16,6 +17,7 @@ final productFormProvider = StateNotifierProvider.autoDispose
       product: product, onSubmitCallback: createUpdateCallback);
 });
 
+//------------------- Notifier -----------------------------
 class ProductFormNotifier extends StateNotifier<ProductFormState> {
   final Future<bool> Function(Map<String, dynamic> productLike)?
       onSubmitCallback;
@@ -140,6 +142,7 @@ class ProductFormNotifier extends StateNotifier<ProductFormState> {
   }
 }
 
+//------------------- State -----------------------------
 class ProductFormState {
   final bool isFormValid;
   final String? id;
