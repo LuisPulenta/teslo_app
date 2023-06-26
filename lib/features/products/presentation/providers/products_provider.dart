@@ -49,7 +49,7 @@ class ProductsNotifier extends StateNotifier<ProductsState> {
       final product = await productsRepository.createUpdateProduct(productLike);
 
       final isProductInList =
-          state.products.any((element) => product.id == product.id);
+          state.products.any((element) => element.id == product.id);
 
       if (!isProductInList) {
         state = state.copyWith(products: [...state.products, product]);

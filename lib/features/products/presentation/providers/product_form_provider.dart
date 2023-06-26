@@ -9,7 +9,6 @@ import 'package:teslo_shop/features/shared/infrastructure/inputs/inputs.dart';
 final productFormProvider = StateNotifierProvider.autoDispose
     .family<ProductFormNotifier, ProductFormState, Product>((ref, product) {
   //final createUpdateCallback = ref.watch(productsRepositoryProvider).createUpdateProduct;
-
   final createUpdateCallback =
       ref.watch(productsProvider.notifier).createOrUpdateProduct;
 
